@@ -1,75 +1,77 @@
 package com.example.weighconv;
 
 import android.os.Bundle;
-import android.view.Menu;
-import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.drawerlayout.widget.DrawerLayout;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.NavigationUI;
-import com.example.weighconv.databinding.ActivityMainBinding;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
+    private EditText editTextValue;
+    private TextView textViewResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        // Inflate binding
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        editTextValue = findViewById(R.id.editTextValue);
+        textViewResult = findViewById(R.id.textViewResult);
 
-        // Set up Toolbar (Corrected)
-        Toolbar toolbar = binding.appBarMain.toolbar;
-        setSupportActionBar(toolbar);
+        Button buttonConvertMeterToKm = findViewById(R.id.buttonConvertMeterToKm);
+        Button buttonConvertPoundToKg = findViewById(R.id.buttonConvertPoundToKg);
+        Button buttonConvertFeetToFoot = findViewById(R.id.buttonConvertFeetToFoot);
+        Button buttonConvertYardToSqFoot = findViewById(R.id.buttonConvertYardToSqFoot);
 
-        // Set up Drawer Layout
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        buttonConvertMeterToKm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String conversionType = "meter_to_kilometer";
+                double inputValue = Double.parseDouble(editTextValue.getText().toString());
+                calculateConversion(inputValue, conversionType);
+            }
+        });
 
-        // Configure top-level navigation destinations
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
+        buttonConvertPoundToKg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String conversionType = "pound_to_kg";
+                double inputValue = Double.parseDouble(editTextValue.getText().toString());
+                calculateConversion(inputValue, conversionType);
+            }
+        });
 
-        // Set up Navigation
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        buttonConvertFeetToFoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String conversionType = "feet_to_foot";
+                double inputValue = Double.parseDouble(editTextValue.getText().toString());
+                calculateConversion(inputValue, conversionType);
+            }
+        });
+
+        buttonConvertYardToSqFoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String conversionType = "yard_to_square_foot";
+                double inputValue = Double.parseDouble(editTextValue.getText().toString());
+                calculateConversion(inputValue, conversionType);
+            }
+        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
-    }
-
-    // Conversion methods
-    private double kgToPound(double kg) {
-        return kg * 2.20462;
-    }
-
-    private double cmToMeter(double cm) {
-        return cm / 100;
-    }
-
-    private double kmToMeter(double km) {
-        return km * 1000;
-    }
-
-    private double poundToKg(double pound) {
-        return pound / 2.20462;
+    private void calculateConversion(double inputValue, String conversionType) {
+        double result = 0.0;
+        if (conversionType.equals("meter_to_kilometer")) {
+            result = inputValue / 1000;
+        } else if (conversionType.equals("pound_to_kg")) {
+            result = inputValue * 0.453592;
+        } else if (conversionType.equals("feet_to_foot")) {
+            result = inputValue / 0.3048;
+        } else if (conversionType.equals("yard_to_square_foot")) {
+            result = inputValue * 9;
+        }
+        textViewResult.setText("Result: " + result);
     }
 }
