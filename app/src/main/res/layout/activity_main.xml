@@ -2,57 +2,81 @@
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <LinearLayout
+    <!-- CoordinatorLayout to support scrolling -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editTextInput"
+        <!-- AppBarLayout with Toolbar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter value"
-            android:inputType="numberDecimal" />
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/buttonKgToPound"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Converter App" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Main Content Layout -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Convert KG to Pounds" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <Button
-            android:id="@+id/buttonPoundToKg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Convert Pounds to KG" />
+            <EditText
+                android:id="@+id/editTextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter value"
+                android:inputType="numberDecimal" />
 
-        <Button
-            android:id="@+id/buttonMilesToKm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Convert Miles to KM" />
+            <Button
+                android:id="@+id/buttonKgToPound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Convert KG to Pounds" />
 
-        <Button
-            android:id="@+id/buttonFeetToMeters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Convert Feet to Meters" />
+            <Button
+                android:id="@+id/buttonPoundToKg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Convert Pounds to KG" />
 
-        <TextView
-            android:id="@+id/textViewResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Result: "
-            android:textSize="18sp"
-            android:paddingTop="10dp" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/buttonMilesToKm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Convert Miles to KM" />
 
-    <!-- Navigation View (Requires app namespace) -->
+            <Button
+                android:id="@+id/buttonFeetToMeters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Convert Feet to Meters" />
+
+            <TextView
+                android:id="@+id/textViewResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result: "
+                android:textSize="18sp"
+                android:paddingTop="10dp" />
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
