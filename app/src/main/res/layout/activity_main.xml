@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="232dp"
-        android:hint="Enter value"
+        android:hint="Enter a Numeric Value"
         android:inputType="numberDecimal"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,12 +78,13 @@
         android:id="@+id/imageView2"
         android:layout_width="174dp"
         android:layout_height="143dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/measure"
         app:layout_constraintBottom_toTopOf="@+id/editTextValue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_launcher" />
+        app:srcCompat="@drawable/measure" />
 
     <View
         android:id="@+id/divider"
@@ -102,5 +103,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=" ConversionPro "
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="86dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
