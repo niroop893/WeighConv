@@ -74,18 +74,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonConvertYardToSqFoot" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="174dp"
-        android:layout_height="143dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/measure"
-        app:layout_constraintBottom_toTopOf="@+id/editTextValue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/measure" />
-
     <View
         android:id="@+id/divider"
         android:layout_width="409dp"
@@ -104,15 +92,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text=" ConversionPro "
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="86dp" />
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="230dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="2dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,13 @@
         android:allowBackup="true"
         tools:overrideLibrary="androidx.navigation.common"
         android:supportsRtl="true"
+        android:icon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.WeighConv"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:label="@string/app_name"
             android:theme="@style/Theme.WeighConv.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
